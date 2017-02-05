@@ -60,6 +60,18 @@ const Skills = (props) => {
 	// 	['Front-end', 'Back-end', 'Other'],
 	// 	[red, green, blue]);
 
+	function getOthers(data) {
+		let result = [];
+
+		data.map(function(item, index){
+			if (!item.strength) {
+				result.push(index == props.data.skills.other.length - 1 ? <span key={'osk' + index}>{item.name}</span> : <span key={'osk' + index}>{item.name+ ', '}</span>);
+			}
+		});
+
+		return result;
+	}
+
 	if (props.windowWidth > breakPoind) {
 		return (
 			<div>
@@ -78,10 +90,8 @@ const Skills = (props) => {
 					</Card>
 
 					<Card title={'More'} color={'blue'}>
-					  <p>
-						{props.data.skills.other.map(function(item, index){
-							return item.strength ? '' : index == props.data.skills.other.length - 1 ? item.name : item.name + ', ';
-						})}
+					  <p className="more-items">
+						{getOthers(props.data.skills.other)}
 					  </p>
 					</Card>
 				</div>
@@ -103,10 +113,8 @@ const Skills = (props) => {
 			</Card>
 
 			<Card title={'More'}>
-			  <p>
-				{props.data.skills.other.map(function(item, index){
-					return item.strength ? '' : index == props.data.skills.other.length - 1 ? item.name : item.name + ', ';
-				})}
+			  <p className="more-items">
+				{getOthers(props.data.skills.other)}
 			  </p>
 			</Card>
 		</div>
