@@ -28,7 +28,7 @@ class RightColumn extends React.Component {
       <div>
         
         {/*<Skills data={this.props.data} windowWidth={this.state.windowWidth}/>*/}
-        <Projects data={this.props.data} />
+        <Projects data={this.props.data} windowWidth={this.state.windowWidth} />
         
         <Card title={'Work'} color={''}>
           
