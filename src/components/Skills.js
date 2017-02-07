@@ -72,24 +72,24 @@ const Skills = (props) => {
 		return result;
 	}
 
-	if (props.windowWidth > breakPoind) {
+	/*if (props.windowWidth > breakPoind) {
 		return (
 			<div>
 				<div className="cards-container">
 					<Card title={'Front-end Skills'} color={'orange'}>
 					  <SkillChart data={frontendSkills} type={'bar'} />
 					</Card>
-					<Card title={'Back-end Skills'} color={'green'}>
+					<Card title={'Back-end Skills'} color={'orange'}>
 					  <SkillChart data={backendSkills} type={'polar'} />
 					</Card>
 				</div>
 
 				<div className="cards-container">
-					<Card title={'Other Skills'} color={'blue2'}>
+					<Card title={'Other Skills'} color={'orange'}>
 					  <SkillChart data={otherSkills} type={'bar'} />
 					</Card>
 
-					<Card title={'More'} color={'blue'}>
+					<Card title={'More'} color={'orange'}>
 					  <p className="more-items">
 						{getOthers(props.data.skills.other)}
 					  </p>
@@ -97,22 +97,22 @@ const Skills = (props) => {
 				</div>
 			</div>
 		);
-	}
+	}*/
 
 	return (
 		<div>
-			<Card title={'Front-end Skills'}>
+			<Card title={'Front-end Skills'}  color={'orange'}>
 			  <SkillChart data={frontendSkills} type={'bar'} />
 			</Card>
-			<Card title={'Back-end Skills'}>
+			<Card title={'Back-end Skills'} color={'orange'}>
 			  <SkillChart data={backendSkills} type={'polar'} />
 			</Card>
 
-			<Card title={'Other Skills'}>
+			<Card title={'Other Skills'} color={'orange'}>
 			  <SkillChart data={otherSkills} type={'bar'} />
 			</Card>
 
-			<Card title={'More'}>
+			<Card title={'More'} color={'orange'}>
 			  <p className="more-items">
 				{getOthers(props.data.skills.other)}
 			  </p>

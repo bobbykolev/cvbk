@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import Card from './Card';
 import Skills from './Skills';
+import Projects from './Projects';
 
 class RightColumn extends React.Component {
   constructor(props, context) {
@@ -26,11 +27,9 @@ class RightColumn extends React.Component {
     return (
       <div>
         
-        <Skills data={this.props.data} windowWidth={this.state.windowWidth}/>
+        {/*<Skills data={this.props.data} windowWidth={this.state.windowWidth}/>*/}
+        <Projects data={this.props.data} />
         
-        <Card title={'Projects'} color={''}>
-
-        </Card> 
         <Card title={'Work'} color={''}>
           
         </Card> 

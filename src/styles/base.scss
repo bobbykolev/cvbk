@@ -52,7 +52,7 @@ img {
     //display: flex;
     //max-width: 1600px;
     padding: 0 30px;
-    min-width: 800px;
+    min-width: 1000px;
     margin: 50px auto;
     min-height: 100%;
 
@@ -64,23 +64,34 @@ img {
         @extend %clear;
 
         &:first-child {
-            width: 300px;
-            background: $mainBlue;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-            color: white;
+            width: 600px;
+
+            > div {
+                &:first-child {
+                    background: $mainBlue;
+                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+                    color: white;
+                }
+
+                margin-bottom: 30px;
+
+                .card {
+                    margin-bottom: 30px;
+                }
+            }
 
             ul {
                 li {
                     display: block;
                     width: calc(100% - 25px);
                     margin: 0 10px;
-                    padding: 15px;
+                    padding: 10px 15px;
                     font-size: 15px;
                     color: #eee;
                     font-weight: 200;
 
                     //text-shadow: 1px 1px 1px #666;
-                    text-align: right;
+                    text-align: center;
 
                     &:first-child {
                         text-align: center;
@@ -88,11 +99,27 @@ img {
                         font-weight: 400;
                         text-shadow: 1px 1px 1px rgba(blue, 0.2);
                         font-family: 'Kalam', Arial;
+                        margin-bottom: 0;
+                        padding-bottom: 0;
+                        line-height: 30px;
+                        margin-top: 10px;
                     }
 
                     &:nth-child(2) {
+                        margin-top: 0;
+                        padding-top: 0;
+                        font-size: 12px;
+                        margin-bottom: 10px;
+
+                        &:before {
+                            content: 'a.k.a. ';
+                        }
+                    }
+
+                    &:nth-child(3) {
                         text-align: center;
-                        padding: 20px;
+                        padding: 30px 20px;
+                        font-size: 16px;
                         border-top: 1px solid rgba(255, 255, 255, 0.2);
                         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
                     }
@@ -117,7 +144,7 @@ img {
 
         &:last-child {
             //flex: 1;
-            width: calc(100% - 300px);
+            width: calc(100% - 600px);
 
             .card {
                 margin-left: 30px;
@@ -132,14 +159,6 @@ img {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     min-height: 150px;
     padding: 15px;
-}
-
-.cards-container {
-    > div {
-        display: inline-block;
-        float: left;
-        width: calc(49.99% - 30px);
-    }
 
     header {
         padding-left: 20px;
@@ -167,6 +186,14 @@ img {
         .orange {
             background: $mainOrange;
         }
+    }
+}
+
+.cards-container {
+    > div {
+        display: inline-block;
+        float: left;
+        width: calc(49.99% - 30px);
     }
 
     @extend %clear;
