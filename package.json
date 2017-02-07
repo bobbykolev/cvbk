@@ -24,7 +24,6 @@
   "author": "Bobby Kolev",
   "license": "MIT",
   "dependencies": {
-    "axios": "0.15.3",
     "chart.js": "2.4.0",
     "es6-promise": "4.0.5",
     "react": "15.4.1",

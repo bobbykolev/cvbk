@@ -8,7 +8,7 @@ import configureStore from './store/configureStore';
 require('./favicon.ico');
 require('./img/profile.jpg');
 require('es6-promise').polyfill();
-import './polyfills';
+import './utils/polyfills';
 import './styles/styles.scss';
 import MainPage from './containers/MainPage';
 
