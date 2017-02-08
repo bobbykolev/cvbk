@@ -13,7 +13,7 @@ const Projects = (props) => {
 
 		for (i; i < to; i++) {
 			result.push(
-				<Card title={data[i].name} color={'blue'} key={'prj' + i}>
+				<Card title={data[i].name} color={'green'} key={'prj' + i}>
 					<Project data={data[i]} />
 				</Card>
 			);

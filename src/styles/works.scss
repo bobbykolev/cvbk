@@ -1,0 +1,17 @@
+.work {
+    ul {
+        li {
+            display: inline-block;
+            float: left;
+            width: 25%;
+            padding: 5px;
+        }
+
+        @extend %clear;
+    }
+
+    h4 {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+}

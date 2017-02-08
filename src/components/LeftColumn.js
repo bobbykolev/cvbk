@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import Contact from './Contact';
+import Name from './Name';
 import Card from './Contact';
 import Skills from './Skills';
 
@@ -12,11 +13,12 @@ class LeftColumn extends React.Component {
     return (
       <div>
         <div> 
-          <div>
-            <img src="./profile.jpg" />
+          <div className="relative">
+            <Contact data={this.props.data}/>
+            <img className="main-img" src="./profile.jpg" />
           </div>
           <div> 
-            <Contact data={this.props.data}/>
+            <Name data={this.props.data}/>
           </div>
         </div>
         <div> 
