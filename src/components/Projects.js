@@ -4,41 +4,42 @@ import Project from './Project';
 
 const Projects = (props) => {
 	//todo: extract into config
-	let breakPoind = 1500; 
+	let breakPoind = 1500,
+		largeRes = props.windowWidth > breakPoind; 
 
-	function getProjectElements (data, colors) {
+	function getProjectElements (data, from, to) {
 		let result = [],
-			largeRes = props.windowWidth > breakPoind;
+			i = from;
 
-		for (let i = 0; i < data.length; i++) {
-			if (largeRes && i % 2 == 0 && data[i+1]) {
-				result.push(
-					<div className="cards-container" key={'prj' + i}>
-						<Card title={data[i].name} color={'blue'}>
-							<Project data={data[i]} />
-						</Card>
-						<Card title={data[i+1].name} color={'blue'}>
-							<Project data={data[i+1]} />
-						</Card>
-					</div>
-				);
-
-				i++;
-			} else {
-				result.push(
-					<Card title={data[i].name} color={'blue'} key={'prj' + i}>
-						<Project data={data[i]} />
-					</Card>
-				);
-			}
+		for (i; i < to; i++) {
+			result.push(
+				<Card title={data[i].name} color={'blue'} key={'prj' + i}>
+					<Project data={data[i]} />
+				</Card>
+			);
 		}
 
 		return result;
 	}
 
+	function getLeftColumn (data) {
+		return getProjectElements(data, 0, largeRes ? Math.floor(data.length/2) : data.length);
+	}
+
+	function getRightColumn (data) {
+		return getProjectElements(data, largeRes ? data.length - Math.ceil(data.length/2) : data.length, data.length);
+	}
+
 	return (
 		<div className="porjects">
-			{getProjectElements(props.data.projects)}
+			<div className={largeRes ? 'cards-container' : ''}>
+				<div>
+					{getLeftColumn(props.data.projects)}
+				</div>
+				<div>
+					{getRightColumn(props.data.projects)}
+				</div>
+			</div>
 		</div>
 	);
 };

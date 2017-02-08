@@ -47,10 +47,27 @@ const Project = (props) => {
 		return result;
 	}
 
+	function getMoreDescription (data) {
+		let result = [];
+
+		if (data && data.length) {
+			data.map(function (item, index) {
+				result.push(<li key={'mdpr' + index}><div className="disc"></div><div>{item}</div></li>);
+			});
+		}
+
+		return result;
+	}
+
 	return (
 		<article>
 			<div className="desc">
 				{props.data.description}
+			</div>
+			<div className="desc">
+				<ul className={props.data.more && props.data.more.length ? '' : 'hide'}>
+					{getMoreDescription(props.data.more)}
+				</ul>
 			</div>
 			<div className="thumbs">
 			{ props.data.images && <ul>{renderImages(props.data.images)}</ul> }
