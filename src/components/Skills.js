@@ -45,14 +45,14 @@ const Skills = (props) => {
 				}
 			}
 
-			result.datasets[i].label = types[i];
+			//result.datasets[i].label = types[i];
 		}
 
 		return result;
 	}
 
-	let frontendSkills = formatSkillData([props.data.skills.frontend], ['Front-end'], [red]);
-	let backendSkills = formatSkillData([props.data.skills.backend], ['Back-end'], [green]);
+	let frontendSkills = formatSkillData([props.data.skills.frontend], ['Front-end'], [blue]);
+	let backendSkills = formatSkillData([props.data.skills.backend], ['Back-end'], [blue]);
 	let otherSkills = formatSkillData([props.data.skills.other], ['Other'], [blue]);
 
 	// let allSkills = formatSkillData(

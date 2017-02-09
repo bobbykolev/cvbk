@@ -159,7 +159,7 @@ img {
     > div {
         display: inline-block;
         float: left;
-        width: calc(49.99% - 30px);
+        width: calc(49.99%);
     }
 
     @extend %clear;
