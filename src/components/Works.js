@@ -2,10 +2,6 @@ import React from 'react';
 import Card from './Card';
 
 const Projects = (props) => {
-	//todo: extract into config
-	let breakPoind = 1500,
-		largeRes = props.windowWidth > breakPoind; 
-
 	function getElements (data) {
 		let result = [];
 

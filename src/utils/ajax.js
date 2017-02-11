@@ -10,7 +10,7 @@
 export default class Ajax {
 
     static send(config) {
-        var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP"),
+        let xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP"),
             doneState = 4,
             resType = 'responseText',
             data;
@@ -58,21 +58,22 @@ export default class Ajax {
     }
 
     static processedData(config) {
-        var sendString = [],
+        let sendString = [],
             sendData = config.data || '';
 
         if (sendData && (!config.type || config.type == 'GET')) {
             if (typeof sendData === "string") {
-                var tmpArr = String.prototype.split.call(sendData, '&');
-                for (var i = 0, j = tmpArr.length; i < j; i++) {
-                    var datum = tmpArr[i].split('=');
+                let tmpArr = String.prototype.split.call(sendData, '&');
+
+                for (let i = 0, j = tmpArr.length; i < j; i++) {
+                    let datum = tmpArr[i].split('=');
                     sendString.push(encodeURIComponent(datum[0]) + "=" + encodeURIComponent(datum[1]));
                 }
             } else if (typeof sendData === 'object' && !(sendData instanceof String || (FormData && sendData instanceof FormData))) {
-                for (var k in sendData) {
-                    var datum = sendData[k];
+                for (let k in sendData) {
+                    let datum = sendData[k];
                     if (Object.prototype.toString.call(datum) == "[object Array]") {
-                        for (var i = 0, j = datum.length; i < j; i++) {
+                        for (let i = 0, j = datum.length; i < j; i++) {
                             sendString.push(encodeURIComponent(k) + "[]=" + encodeURIComponent(datum[i]));
                         }
                     } else {
@@ -90,7 +91,7 @@ export default class Ajax {
     }
 
     static sendReq(config, data, xmlhttp) {
-        var params = data ? "?" + data : '';
+        let params = data ? "?" + data : '';
 
         switch (config.type) {
             case 'POST':
@@ -124,7 +125,7 @@ export default class Ajax {
             xmlhttp.setRequestHeader('Content-Type', config.contentType);
         }
 
-        for (var h in config.headers) {
+        for (let h in config.headers) {
             xmlhttp.setRequestHeader(h, config.headers[j]);
         }
 

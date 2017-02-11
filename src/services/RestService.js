@@ -1,4 +1,4 @@
-import Ajax from '../utils/Ajax';
+import Ajax from '../utils/ajax';
 
 export default class RestService {
 

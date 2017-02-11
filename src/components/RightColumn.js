@@ -1,6 +1,4 @@
-import React, {PropTypes} from 'react';
-import Card from './Card';
-import Skills from './Skills';
+import React, { PropTypes } from 'react';
 import Projects from './Projects';
 import Works from './Works';
 import Edu from './Edu';
@@ -29,8 +27,6 @@ class RightColumn extends React.Component {
   render() {
     return (
       <div>
-        
-        {/*<Skills data={this.props.data} windowWidth={this.state.windowWidth}/>*/}
         <Projects data={this.props.data} windowWidth={this.state.windowWidth} />
 
         <Works data={this.props.data} windowWidth={this.state.windowWidth} />

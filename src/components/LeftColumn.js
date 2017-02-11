@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import Contact from './Contact';
 import Name from './Name';
-import Card from './Contact';
 import Skills from './Skills';
 
 class LeftColumn extends React.Component {

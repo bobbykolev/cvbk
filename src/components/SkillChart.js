@@ -1,13 +1,10 @@
 import React from 'react';
 import {
     HorizontalBar,
-    Doughnut,
-    defaults
+    Doughnut
 } from 'react-chartjs-2';
 
 const SkillChart = (props) => {
-    //defaults.global.legend.display = false;
-
     let barOpts = {
             maintainAspectRatio: false,
             animation: {

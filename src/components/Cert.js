@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Card from './Card';
 import Lightbox from 'react-image-lightbox';
 
@@ -78,7 +78,6 @@ class Cert extends Component  {
 	render () {
 		const {
             photoIndex,
-            isOpen,
         } = this.state;
 
 		return (
@@ -102,6 +101,10 @@ class Cert extends Component  {
 			</div>
 		);
 	}
+}
+
+Cert.propTypes = {
+	data: PropTypes.object.isRequired
 };
 
 export default Cert;

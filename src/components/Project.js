@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import Card from './Card';
+import React, { Component, PropTypes } from 'react';
 import Lightbox from 'react-image-lightbox';
 
 class Project extends Component  {
@@ -91,7 +90,6 @@ class Project extends Component  {
 	render() {
 		const {
             photoIndex,
-            isOpen,
         } = this.state;
 
 		return (
@@ -134,6 +132,10 @@ class Project extends Component  {
 			</article>
 		);
 	}
+}
+
+Project.propTypes = {
+	data: PropTypes.object.isRequired
 };
 
 export default Project;
