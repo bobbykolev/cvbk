@@ -30,7 +30,7 @@ const Projects = (props) => {
 
 	return (
 		<div className="work">
-			<Card title={'Work Experience'} color={'blue'}>
+			<Card title={'Work Experience'} color={'blue2'}>
 				<ul>
 					{getElements(props.data.work)}
 				</ul>

@@ -17,6 +17,7 @@ body, html {
 
 body {
     background: $bg;
+    color: $fontGrey;
     font-family: 'Lato', Arial, sans-serif;
 }
 
@@ -165,6 +166,14 @@ img {
     @extend %clear;
 }
 
+.higher-bar {
+    height: 350px;
+}
+
+.bar {
+    height: 200px;
+}
+
 .more-items {
     margin-top: 20px;
     padding: 10px;
@@ -189,11 +198,24 @@ img {
     font-size: 14px;
 }
 
+.tech {
+    font-weight: bold;
+}
+
+.roles {
+    color: $mainBlue;
+    font-weight: bold;
+    font-style: italic;
+}
+
 .links {
+    @extend %clear;
+
     ul {
         width: 100%;
-        border-top: 1px solid rgba($mainBlue, 0.2);
-        padding-top: 5px;
+
+        //border-top: 1px solid rgba($mainBlue, 0.2);
+        //padding-top: 5px;
 
         li {
             display: inline-block;
@@ -202,15 +224,16 @@ img {
 
             a {
                 font-weight: bold;
-                color: $mainBlue;
-                text-decoration: none;
+                color: $mainGreen;
+
+                //text-decoration: none;
 
                 &:hover {
-                    color: lighten($mainBlue, 10%);
+                    color: darken($mainGreen, 10%);
                 }
 
                 &:visited {
-                    color: lighten($mainBlue, 10%);
+                    color: darken($mainGreen, 10%);
                 }
             }
         }

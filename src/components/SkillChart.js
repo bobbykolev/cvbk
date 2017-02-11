@@ -1,32 +1,38 @@
 import React from 'react';
 import {
-    Bar,
-    Polar
+    HorizontalBar,
+    Doughnut,
+    defaults
 } from 'react-chartjs-2';
 
 const SkillChart = (props) => {
+    //defaults.global.legend.display = false;
+
     let barOpts = {
+            maintainAspectRatio: false,
             animation: {
                 duration: 2000
             },
             scales: {
                 xAxes: [{
-                    barThickness: 10,
+                    ticks: {
+                        display: false,
+                        min: 0,
+                        max: 5,
+                        fontColor: "#3498DB"
+                    },
                     gridLines: {
                         display: false,
                         color: "rgba(255,255,255,0.0)",
                         zeroLineColor: "rgba(255,255,255,0.0)"
-                    },
-                    ticks: {
-                        fontColor: "#3498DB"
                     }
                 }],
                 yAxes: [{
-                    barThickness: 10,
+                    barThickness: 8,
                     ticks: {
-                        min: 0,
-                        max: 5,
-                        display: false
+                        autoSkip: false,
+                        fontColor: "#3498DB",
+                        fontSize: 14
                     },
                     gridLines: {
                         display: false,
@@ -49,27 +55,21 @@ const SkillChart = (props) => {
                 }
             },
             legend: {
-                onClick: (e) => e.stopPropagation()
+                onClick: (e) => e.stopPropagation(),
+                display: false
             }
         },
         polarOpts = {
+            maintainAspectRatio: false,
             animation: {
                 duration: 2000
             },
             scales: {
                 xAxes: [{
                     display: false,
-                    ticks: {
-                        min: 0,
-                        max: 5
-                    }
                 }],
                 yAxes: [{
                     display: false,
-                    ticks: {
-                        min: 0,
-                        max: 5
-                    }
                 }]
             },
             tooltips: {
@@ -88,24 +88,19 @@ const SkillChart = (props) => {
             elements: {
                 arc: {
                     borderColor: "#FFFFFF"
-                }
+                },
+
             },
             legend: {
-                onClick: (e) => e.stopPropagation()
+                onClick: (e) => e.stopPropagation(),
+                display: true
             }
         };
 
-    return ( <
-        div > {
-            props.type != 'polar' ? < Bar data = {
-                props.data
-            }
-            options = {
-                barOpts
-            }
-            /> : <Polar data={props.data} options={polarOpts} / >
-        } <
-        /div>
+    return ( 
+        <div className={props.data.labels && props.data.labels.length > 10 ? 'higher-bar' : 'bar'}> 
+        {props.type != 'polar' ? <HorizontalBar data ={props.data} options={barOpts} /> : <Doughnut data={props.data} options={polarOpts} />} 
+        </div>
     );
 };
 

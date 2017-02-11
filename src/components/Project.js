@@ -1,45 +1,58 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Card from './Card';
+import Lightbox from 'react-image-lightbox';
 
-const Project = (props) => {
-	function getDefaultObject () {
-		return {
-			"name": "",
-			"description": "",
-			"links": {
-				"code": null,
-				"demo": ""
-			},
-			"images": [
-			],
-			"technologies": [
-			],
-			"role": "",
-			"workId": null
-		};
+class Project extends Component  {
+	constructor () {
+		super();
+
+		this.getUrl = this.getUrl.bind(this);
+		this.renderImages = this.renderImages.bind(this);
+		this.getMoreDescription = this.getMoreDescription.bind(this);
+		this.imgClick = this.imgClick.bind(this);
+		
+		this.onCloseRequest = this.onCloseRequest.bind(this);
+		this.onMovePrevRequest = this.onMovePrevRequest.bind(this);
+		this.onMoveNextRequest = this.onMoveNextRequest.bind(this);
+
+		this.state = {
+            photoIndex: 0,
+            isOpen: false
+        };
 	}
 
-	function getUrl (url) {
+	getUrl (url) {
 		return './img/' + url;
 	}
 
-	function renderImages (images) {
-		let result = [];
+	imgClick (index, instance, e) {
+		e && e.preventDefault();
+
+		this.setState({
+			photoIndex: index,
+            isOpen: true	
+		});
+	}
+
+	renderImages (images) {
+		let result = [],
+			that = this;
 
 		images.map(function (img, index) {
 			if (img.url) {
 				if (img.url.indexOf('swf') > -1) {
 					result.push(<li className="swf" key={'imgpr' + index}>
-									<a className="ovelay-link" href={getUrl(img.url)} target="_blank">
+									<a className="ovelay-link" href={that.getUrl(img.url)} target="_blank">
 									</a>
-									<object type="application/x-shockwave-flash" data={getUrl(img.url)} 
+									<object type="application/x-shockwave-flash" data={that.getUrl(img.url)} 
 										    width="80" height="50">
-										    <param name="movie" value={getUrl(img.url)} />
+										    <param name="movie" value={that.getUrl(img.url)} />
 										    <param name="quality" value="high" />
 									</object>
         						</li>);
 				} else {
-					result.push(<li key={'imgpr' + index}><a href={getUrl(img.url)} target="_blank"> <img src={getUrl(img.url)} /></a></li>);
+					//result.push(<li key={'imgpr' + index}><a href={that.getUrl(img.url)} target="_blank"> <img src={that.getUrl(img.url)} /></a></li>);
+					result.push(<li key={'imgpr' + index}><a onClick={that.imgClick.bind(that, index)}> <img src={that.getUrl(img.url)} /></a></li>);
 				}
 			}
 		});
@@ -47,7 +60,7 @@ const Project = (props) => {
 		return result;
 	}
 
-	function getMoreDescription (data) {
+	getMoreDescription (data) {
 		let result = [];
 
 		if (data && data.length) {
@@ -59,33 +72,68 @@ const Project = (props) => {
 		return result;
 	}
 
-	return (
-		<article>
-			<div className="desc">
-				{props.data.description}
-			</div>
-			<div className="desc">
-				<ul className={props.data.more && props.data.more.length ? '' : 'hide'}>
-					{getMoreDescription(props.data.more)}
-				</ul>
-			</div>
-			<div className="thumbs">
-			{ props.data.images && <ul>{renderImages(props.data.images)}</ul> }
-			</div>
-			<div className="tech">
-				{ props.data.technologies.join(', ') }	
-			</div>
-			<div className="roles">
-				{ props.data.role }
-			</div>
-			<div className="links">
-				<ul>
-					<li>{props.data.links.demo && <a target="_blank" href={props.data.links.demo}>Demo</a>}</li>
-					<li>{props.data.links.code &&  <a target="_blank" href={props.data.links.demo}>Code</a>}</li>
-				</ul>
-			</div>
-		</article>
-	);
+	onCloseRequest () { 
+		this.setState({ isOpen: false });
+	}
+
+	onMovePrevRequest () { 
+		this.setState({
+        	photoIndex: (this.state.photoIndex + this.props.data.images.length - 1) % this.props.data.images.length
+    	});
+	}
+
+	onMoveNextRequest () { 
+		this.setState({
+	        photoIndex: (this.state.photoIndex + 1) % this.props.data.images.length
+	    });
+	}
+
+	render() {
+		const {
+            photoIndex,
+            isOpen,
+        } = this.state;
+
+		return (
+			<article>
+				<div className="links">
+					<ul>
+						<li>{this.props.data.links.demo && <a target="_blank" href={this.props.data.links.demo}>Demo</a>}</li>
+						<li>{this.props.data.links.code &&  <a target="_blank" href={this.props.data.links.demo}>Code</a>}</li>
+					</ul>
+				</div>
+				<div className="tech">
+					{ this.props.data.technologies.join(', ') }	
+				</div>
+				<div className="roles">
+					{ this.props.data.role }
+				</div>
+				<div className="desc">
+					{this.props.data.description}
+				</div>
+				<div className="desc">
+					<ul className={this.props.data.more && this.props.data.more.length ? '' : 'hide'}>
+						{this.getMoreDescription(this.props.data.more)}
+					</ul>
+				</div>
+				<div className="thumbs">
+				{ this.props.data.images && <ul>{this.renderImages(this.props.data.images)}</ul> }
+				</div>
+
+				{this.state.isOpen &&
+                    <Lightbox
+                        mainSrc={this.getUrl(this.props.data.images[photoIndex].url)}
+                        nextSrc={this.getUrl(this.props.data.images[(photoIndex + 1) % this.props.data.images.length].url)}
+                        prevSrc={this.getUrl(this.props.data.images[(photoIndex + this.props.data.images.length - 1) % this.props.data.images.length].url)}
+
+                        onCloseRequest={this.onCloseRequest}
+                        onMovePrevRequest={this.onMovePrevRequest}
+                        onMoveNextRequest={this.onMoveNextRequest}
+                    />
+                }
+			</article>
+		);
+	}
 };
 
 export default Project;

@@ -44,7 +44,16 @@
                 display: block;
                 float: none;
                 width: 100%;
-                padding: 5px;
+            }
+        }
+    }
+
+    .cert {
+        ul {
+            li {
+                display: inline-block;
+                float: left;
+                width: 25%;
             }
         }
     }

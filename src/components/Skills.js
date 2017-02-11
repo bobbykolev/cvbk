@@ -17,7 +17,7 @@ const Skills = (props) => {
             borderColor: [
                 
             ],
-            borderWidth: 2,
+            borderWidth: 1,
             data: [],
         };
 	}
@@ -101,18 +101,18 @@ const Skills = (props) => {
 
 	return (
 		<div>
-			<Card title={'Front-end Skills'}  color={'orange'}>
+			<Card title={'Front-end Skills'}  color={'blue'}>
 			  <SkillChart data={frontendSkills} type={'bar'} />
 			</Card>
-			<Card title={'Back-end Skills'} color={'orange'}>
+			<Card title={'Back-end Skills'} color={'blue'}>
 			  <SkillChart data={backendSkills} type={'polar'} />
 			</Card>
 
-			<Card title={'Other Skills'} color={'orange'}>
+			<Card title={'Other Skills'} color={'blue'}>
 			  <SkillChart data={otherSkills} type={'bar'} />
 			</Card>
 
-			<Card title={'More'} color={'orange'}>
+			<Card title={'and more...'} color={'blue'}>
 			  <p className="more-items">
 				{getOthers(props.data.skills.other)}
 			  </p>

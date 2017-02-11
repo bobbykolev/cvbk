@@ -4,6 +4,7 @@ import Skills from './Skills';
 import Projects from './Projects';
 import Works from './Works';
 import Edu from './Edu';
+import Cert from './Cert';
 
 class RightColumn extends React.Component {
   constructor(props, context) {
@@ -31,10 +32,12 @@ class RightColumn extends React.Component {
         
         {/*<Skills data={this.props.data} windowWidth={this.state.windowWidth}/>*/}
         <Projects data={this.props.data} windowWidth={this.state.windowWidth} />
-        
+
         <Works data={this.props.data} windowWidth={this.state.windowWidth} />
 
         <Edu data={this.props.data} windowWidth={this.state.windowWidth} />
+
+        <Cert data={this.props.data} windowWidth={this.state.windowWidth} />
       </div>
     );
   }
