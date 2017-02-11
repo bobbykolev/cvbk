@@ -5,8 +5,7 @@ import Card from './Card';
 const Skills = (props) => {
 	let red = '231, 76, 60', 
 		green = '167, 197, 32', 
-		blue = '52, 152, 219',
-		breakPoind = 1250;
+		blue = '52, 152, 219';
 
 	function getDefaultDataset () {
 		return {
@@ -55,11 +54,6 @@ const Skills = (props) => {
 	let backendSkills = formatSkillData([props.data.skills.backend], ['Back-end'], [blue]);
 	let otherSkills = formatSkillData([props.data.skills.other], ['Other'], [blue]);
 
-	// let allSkills = formatSkillData(
-	// 	[props.data.skills.frontend, props.data.skills.backend, props.data.skills.other], 
-	// 	['Front-end', 'Back-end', 'Other'],
-	// 	[red, green, blue]);
-
 	function getOthers(data) {
 		let result = [];
 
@@ -71,33 +65,6 @@ const Skills = (props) => {
 
 		return result;
 	}
-
-	/*if (props.windowWidth > breakPoind) {
-		return (
-			<div>
-				<div className="cards-container">
-					<Card title={'Front-end Skills'} color={'orange'}>
-					  <SkillChart data={frontendSkills} type={'bar'} />
-					</Card>
-					<Card title={'Back-end Skills'} color={'orange'}>
-					  <SkillChart data={backendSkills} type={'polar'} />
-					</Card>
-				</div>
-
-				<div className="cards-container">
-					<Card title={'Other Skills'} color={'orange'}>
-					  <SkillChart data={otherSkills} type={'bar'} />
-					</Card>
-
-					<Card title={'More'} color={'orange'}>
-					  <p className="more-items">
-						{getOthers(props.data.skills.other)}
-					  </p>
-					</Card>
-				</div>
-			</div>
-		);
-	}*/
 
 	return (
 		<div>
