@@ -46,6 +46,7 @@
                 > div {
                     display: inline-block;
                     float: left;
+                    margin-bottom: 10px;
 
                     &:last-child {
                         width: calc(100% - 26px);
