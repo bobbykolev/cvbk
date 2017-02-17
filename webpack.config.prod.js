@@ -4,6 +4,7 @@ import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import path from 'path';
 
@@ -23,7 +24,7 @@ export default {
   target: 'web', // necessary per https://webpack.github.io/docs/testing.html#compile-and-test
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: '/cv/',
     filename: '[name].[chunkhash].js'
   },
   plugins: [
@@ -64,7 +65,20 @@ export default {
     new webpack.optimize.DedupePlugin(),
 
     // Minify JS
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin(),
+
+    new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, 'src/img/'),
+                to: path.resolve(__dirname, 'dist/img/'),
+                toType: 'dir'
+            }
+        ], {
+            ignore: [ 
+                '*.psd'
+            ],
+            copyUnmodified: true
+        })
   ],
   module: {
     loaders: [
