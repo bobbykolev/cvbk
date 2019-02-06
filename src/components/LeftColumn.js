@@ -12,7 +12,7 @@ class LeftColumn extends React.Component {
     return (
       <div>
         <div> 
-          <div className="relative">
+          <div className="relative clear">
             <Contact data={this.props.data}/>
             <img className="main-img" src="./profile.jpg" />
           </div>

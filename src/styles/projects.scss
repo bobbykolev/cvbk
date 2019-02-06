@@ -40,7 +40,7 @@
 
     .desc {
         ul {
-            @extend %clear;
+            @extend .clear;
 
             li {
                 > div {

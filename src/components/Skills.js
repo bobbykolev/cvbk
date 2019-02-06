@@ -59,7 +59,7 @@ const Skills = (props) => {
 
 		data.map(function(item, index){
 			if (!item.strength) {
-				result.push(index == props.data.skills.other.length - 1 ? <span key={'osk' + index}>{item.name}</span> : <span key={'osk' + index}>{item.name+ ', '}</span>);
+				result.push(index == data.length - 1 ? <span key={'osk' + index}>{item.name}</span> : <span key={'osk' + index}>{item.name+ ', '}</span>);
 			}
 		});
 
@@ -71,8 +71,11 @@ const Skills = (props) => {
 			<Card title={'Front-end Skills'}  color={'blue'}>
 			  <SkillChart data={frontendSkills} type={'bar'} />
 			</Card>
-			<Card title={'Back-end Skills'} color={'blue'}>
-			  <SkillChart data={backendSkills} type={'polar'} />
+			<Card title={'Some Experience with'} color={'blue'}>
+			  {/*<SkillChart data={backendSkills} type={'polar'} />*/}
+			  <p className="more-items">
+				{getOthers(props.data.skills.backend)}
+			  </p>
 			</Card>
 
 			<Card title={'Other Skills'} color={'blue'}>

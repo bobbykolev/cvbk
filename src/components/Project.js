@@ -97,7 +97,7 @@ class Project extends Component  {
 				<div className="links">
 					<ul>
 						<li>{this.props.data.links.demo && <a target="_blank" href={this.props.data.links.demo}>Demo</a>}</li>
-						<li>{this.props.data.links.code &&  <a target="_blank" href={this.props.data.links.demo}>Code</a>}</li>
+						<li>{this.props.data.links.code &&  <a target="_blank" href={this.props.data.links.code}>Code</a>}</li>
 					</ul>
 				</div>
 				<div className="tech">

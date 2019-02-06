@@ -85,7 +85,7 @@ img {
         min-height: 100%;
         margin-bottom: 20px;
 
-        @extend %clear;
+        @extend .clear;
 
         &:first-child {
             width: 600px;
@@ -163,11 +163,11 @@ img {
         width: calc(49.99%);
     }
 
-    @extend %clear;
+    @extend .clear;
 }
 
-.higher-bar {
-    height: 350px;
+.higher-bar, .higher-bar > .chartjs-hidden-iframe {
+    height: 480px !important;
 }
 
 .bar {
@@ -209,7 +209,7 @@ img {
 }
 
 .links {
-    @extend %clear;
+    @extend .clear;
 
     ul {
         width: 100%;
@@ -292,7 +292,7 @@ img {
                 padding: 20px 15px;
                 width: calc(50% - 25px);
 
-                @extend %clear; */
+                @extend .clear; */
             }
 
             a {
@@ -323,7 +323,7 @@ img {
             &.floated {
                 width: 50px;
 
-                @extend %clear;
+                @extend .clear;
             }
 
             a {

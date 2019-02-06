@@ -6,6 +6,7 @@ import {
 
 const SkillChart = (props) => {
     let barOpts = {
+            responsive: true, 
             maintainAspectRatio: false,
             animation: {
                 duration: 2000

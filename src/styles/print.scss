@@ -1,0 +1,45 @@
+@media print {
+    body {
+        background: white;
+    }
+
+    #wrapper > div:first-child, #wrapper > div:last-child {
+        width: 100%;
+    }
+
+    #wrapper > div:last-child {
+        .card {
+            margin: 4px 8px 8px 0;
+        }
+
+        a[target="_blank"] {
+            display: none;
+        }
+    }
+
+    .card {
+        display: block;
+        page-break-before: auto;
+        page-break-after: auto;
+        page-break-inside: avoid;
+    }
+
+    .main-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: auto;
+        max-width: auto;
+        min-height: 200px;
+        max-height: 200px;
+    }
+
+    .contacts {
+        position: static;
+        background: $mainBlue;
+    }
+
+    .roles {
+        font-weight: normal;
+    }
+}
