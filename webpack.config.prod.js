@@ -7,6 +7,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import path from 'path';
+import workboxPlugin from 'workbox-webpack-plugin';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
@@ -67,6 +68,55 @@ export default {
     // Minify JS
     new webpack.optimize.UglifyJsPlugin(),
 
+    new workboxPlugin.GenerateSW({
+      swDest: './src/sw.js',
+      clientsClaim: true,
+      skipWaiting: true,
+      runtimeCaching: [{
+        urlPattern: new RegExp('http://bobbykolev.com/cv/cv.json'),
+        handler: 'staleWhileRevalidate',
+        options: {
+          cacheName: 'json-cache',
+          cacheableResponse: {
+            statuses: [0, 200],
+          },
+        },
+      }]
+    }),
+
+    new workboxPlugin.InjectManifest({
+      swSrc: path.resolve('./src/sw.js'),
+      filename: './src/manifest.json',
+      name: 'Bobby CV',
+      short_name: 'BCV',
+      description: 'Resume of Bobby Kolev',
+      background_color: '#ffffff',
+      theme_color: '#3498db',
+      display: 'standalone',
+      orientation: 'portrait',
+      fingerprints: false,
+      inject: false,
+      start_url: '/cv',
+      ios: {
+        'apple-mobile-web-app-title': 'BCV',
+        'apple-mobile-web-app-status-bar-style': '#3498db',
+      },
+      icons: [
+        {
+          src: path.resolve('src/img/pwa-icon.png'),
+          sizes: [192],
+          destination: '/',
+        },
+        {
+          src: path.resolve('src/img/pwa-icon512.png'),
+          sizes: [512],
+          destination: '/',
+        },
+      ],
+      includeDirectory: true,
+      publicPath: '..',
+    }),
+
     new CopyWebpackPlugin([
             {
                 from: path.resolve(__dirname, 'src/img/'),
@@ -74,7 +124,7 @@ export default {
                 toType: 'dir'
             }
         ], {
-            ignore: [ 
+            ignore: [
                 '*.psd'
             ],
             copyUnmodified: true

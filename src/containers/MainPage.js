@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/actions';
 import LeftColumn from '../components/LeftColumn';
 import RightColumn from '../components/RightColumn';
+import OfflineSupport from '../components/OfflineSupport';
 
 class MainPage extends React.Component {
   constructor(props, context) {
@@ -13,6 +14,7 @@ class MainPage extends React.Component {
   render () {
     return (
       <div id="wrapper">
+      <OfflineSupport></OfflineSupport>
         <LeftColumn data={this.props.data} />
         <RightColumn data={this.props.data} />
       </div>
