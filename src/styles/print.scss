@@ -1,3 +1,7 @@
+.only-print {
+    display: none !important;
+}
+
 @media print {
     body {
         background: white;
@@ -41,5 +45,9 @@
 
     .roles {
         font-weight: normal;
+    }
+
+    .only-print {
+        display: block !important;
     }
 }

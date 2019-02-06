@@ -7,6 +7,9 @@ const Contact = (props) => {
     Object.keys(props.data.contact).map(function (item) {
       if (props.data.contact[item]) {
         switch (item) {
+          case 'viewOnline':
+            items.push(<li className="only-print" key={item} ><a target="_blank" href={props.data.contact[item]}>View this CV online (latest)</a></li>);
+            break;
           case 'bday':
             //items.push(<li key={item} >{new Date(props.data.contact[item]).toLocaleDateString('bg')}</li>);
             break;
